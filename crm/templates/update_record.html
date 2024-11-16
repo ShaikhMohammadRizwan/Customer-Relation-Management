@@ -2,18 +2,44 @@
 
 {% block content %}
 
-<div class="col-md-6 offset-md-3">
+<div class="container mt-5">
+    <div class="col-md-6 offset-md-3">
+        <h1 class="text-center">Add Record</h1>
+        <br/>
 
-<h1>Add Records</h1>
+        <form method="POST">
+            {% csrf_token %}
+            
+            {% if form.errors %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>There were errors in your form. Please fix them and try again.</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endif %}
+            
+            {% for field in form %}
+                <div class="mb-3">
+                    <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+                    {{ field }}
+                    {% if field.errors %}
+                        <div class="text-danger">
+                            {% for error in field.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
 
-<form method="POST">
-	{% csrf_token %}
-    
-    {{form.as_p}}
+            <br/>
+            <button type="submit" class="btn btn-primary w-100">Add Record</button>
+        </form>
 
-	<br/>
-	  <button type="submit" class="btn btn-secondary">Update Record</button>
-	</form>
-
+        <br/>
+        <div class="text-center">
+            <a href="{% url 'home' %}" class="btn btn-link">Back to Home</a>
+        </div>
     </div>
-{% endblock content %}
+</div>
+
+{% endblock %}

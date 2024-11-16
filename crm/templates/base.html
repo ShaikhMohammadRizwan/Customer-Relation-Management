@@ -5,28 +5,95 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Customer Relation Management</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+      /* Customize Navbar */
+      .navbar {
+        background-color: #2C3E50;
+      }
+
+      .navbar a {
+        color: #fff;
+      }
+
+      .navbar a:hover {
+        color: #f39c12;
+      }
+
+      /* Styling alert messages */
+      .alert {
+        font-size: 16px;
+        border-radius: 8px;
+        transition: all 0.3s ease-in-out;
+      }
+
+      .alert-success {
+        background-color: #28a745;
+        color: white;
+      }
+
+      .alert-error {
+        background-color: #dc3545;
+        color: white;
+      }
+
+      .alert-info {
+        background-color: #17a2b8;
+        color: white;
+      }
+
+      /* Centered Content */
+      .container {
+        margin-top: 30px;
+        padding: 20px;
+        background-color: #f8f9fa;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Input fields with floating labels */
+      .form-floating {
+        margin-bottom: 15px;
+      }
+
+      /* Button Hover Effects */
+      button.btn {
+        transition: all 0.3s ease-in-out;
+      }
+
+      button.btn:hover {
+        transform: scale(1.05);
+        background-color: #007bff;
+        color: #fff;
+      }
+
+      /* Animation for content loading */
+      .fade-in {
+        animation: fadeIn 1s ease-in;
+      }
+
+      @keyframes fadeIn {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+      }
+    </style>
   </head>
   <body>
     {% include "navbar.html" %}
-    <div class="container">
+    <div class="container fade-in">
         <br>
         {% if messages %}
         {% for message in messages %}
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <div class="alert alert-dismissible fade show" role="alert">
           {{ message }}
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
-
         {% endfor %}
-
         {% endif %}
 
-    {% block content %}
-    
-    
-
-    {% endblock content %}
-</div>
+        {% block content %}
+        <!-- Add form or content here -->
+        {% endblock content %}
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
