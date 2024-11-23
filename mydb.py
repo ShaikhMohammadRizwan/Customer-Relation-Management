@@ -1,10 +1,15 @@
 import mysql.connector
 
+# Replace hardcoded credentials with variables
+host = "localhost"  # Change to your host if necessary
+user = "your_username"       # Change to your MySQL username
+password = "your_password_here"  # Replace with your actual MySQL password
+
 # Connect to MySQL server
 dataBase = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="root@123",
+    host=host,
+    user=user,
+    password=password,
 )
 
 # Prepare a cursor object
